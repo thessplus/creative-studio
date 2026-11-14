@@ -7,7 +7,7 @@
  <label class="consent-row"><input type="checkbox" name="consent" value="yes" required><span>I agree to have my details used to respond to this inquiry, as described in the <a href="../privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
  <div class="form-bottom"><p>We use your details to respond to your inquiry.</p><button type="submit" id="send-inquiry">Send message <span aria-hidden="true">↗</span></button></div>
  <p id="copy-feedback" role="status" aria-live="polite" class="form-feedback"></p>
- <div id="ssplus-success" hidden role="status" aria-live="polite" class="form-success"><strong>Message received.</strong><p>Thank you for reaching out. We’ll get back to you using the details you provided.</p></div>
+ <div id="ssplus-success" hidden style="display:none" role="status" aria-live="polite" class="form-success"><strong>Message received.</strong><p>Thank you for reaching out. We’ll get back to you using the details you provided.</p></div>
  </form><iframe name="ssplus-response-frame" id="ssplus-response-frame" title="Inquiry processing" style="display:none" aria-hidden="true"></iframe></div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="../contact/">Contact</a> · <a href="../privacy-policy/">Privacy Policy</a> · <a href="../accessibility/">Accessibility</a></span></footer><script>document.getElementById("year").textContent=new Date().getFullYear();</script><script>
 const SSPLUS_FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbw0jfU9uzN_qRJfU-tJsKEQlW2Z_xmgxFFN9DNziqvqNoXAnJtr4KEfVWtTO-KbkwYg/exec';
 const form=document.getElementById('contact-inquiry');
@@ -18,7 +18,7 @@ let pending=null, pollCount=0, pollTimer=null;
 function endPending(){pending=null;clearTimeout(pollTimer);button.disabled=false;}
 window.ssplusStatusCallback=function(result){
  if(!pending||!result||result.requestId!==pending)return;
- if(result.saved===true){endPending();form.reset();feedback.textContent='';success.hidden=false;success.scrollIntoView({behavior:'smooth',block:'nearest'});}
+ if(result.saved===true){endPending();form.reset();feedback.textContent='';success.hidden=false;success.style.display='block';success.scrollIntoView({behavior:'smooth',block:'nearest'});}
 };
 function checkStatus(id){
  if(pending!==id)return;
@@ -41,7 +41,7 @@ form.addEventListener('submit',event=>{
    messageField.value=sourceTag+messageField.value;
  }
  form.action=SSPLUS_FORM_ENDPOINT; pending=id;pollCount=0;
- button.disabled=true;success.hidden=true;feedback.textContent='Sending your message…';
+ button.disabled=true;success.hidden=true;success.style.display='none';feedback.textContent='Sending your message…';
  pollTimer=setTimeout(()=>checkStatus(id),1400);
 });
 </script></div></body></html>
