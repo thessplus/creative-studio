@@ -26,3 +26,50 @@
 .hero-art img,.hero-art.is-revealing img{animation:none!important;opacity:1!important;transform:none!important;filter:drop-shadow(0 28px 34px rgba(0,0,0,.55))}
 .hero-art .metal-glint{display:none!important}
 @media(max-width:760px){.featured-film{padding:10px 0 10px}.featured-film-inner{width:100%}.film-frame{border-left:0;border-right:0}.film-meta{padding:20px;align-items:flex-start;flex-direction:column;gap:6px}.film-meta p{text-align:left}.film-frame{aspect-ratio:16/10}}
+
+
+/* V5: edge-to-edge editorial video, and elegant moving blade cut. */
+.hero-art{overflow:visible;isolation:isolate}
+.hero-art::after{display:none!important}
+.hero-art img{z-index:2;position:relative;max-height:410px;object-fit:contain}
+.blade-cut{
+  position:absolute;z-index:1;pointer-events:none;
+  width:150%;height:2px;left:-27%;bottom:17%;
+  transform:rotate(-21deg);transform-origin:center;
+  background:linear-gradient(90deg,transparent 0%,rgba(87,29,55,.3) 12%,rgba(190,71,110,.63) 55%,rgba(174,137,170,.24) 84%,transparent 100%);
+  box-shadow:0 0 1px rgba(238,145,182,.22);overflow:visible;
+}
+.blade-reflection{
+  position:absolute;inset:-2px 0;overflow:hidden;
+}
+.blade-reflection::before{
+  content:'';position:absolute;top:0;bottom:0;width:20%;left:0;
+  background:linear-gradient(90deg,transparent,rgba(247,244,251,.35) 28%,rgba(255,255,255,1) 50%,rgba(255,238,247,.35) 65%,transparent);
+  filter:blur(.3px);opacity:0;transform:translateX(-130%);
+  animation:blade-sweep 15s ease-in-out infinite;
+}
+.blade-spark{
+  position:absolute;top:50%;left:0;width:5px;height:5px;border-radius:50%;
+  background:white;box-shadow:0 0 5px 2px #fff,0 0 14px 4px #eba8cd,0 0 24px 5px #d76a99;
+  opacity:0;transform:translate(-50%,-50%);
+  animation:blade-sparkle 15s ease-in-out infinite;
+}
+.blade-spark::before,.blade-spark::after{content:'';position:absolute;background:linear-gradient(90deg,transparent,#fff,transparent);left:50%;top:50%;width:36px;height:1px;transform:translate(-50%,-50%)}
+.blade-spark::after{transform:translate(-50%,-50%) rotate(90deg)}
+@keyframes blade-sweep{0%,5%{transform:translateX(-130%);opacity:0}7%{opacity:1}15%{transform:translateX(650%);opacity:1}17%,100%{opacity:0;transform:translateX(650%)}}
+@keyframes blade-sparkle{0%,6%{left:0%;opacity:0}8%{opacity:1}15%{left:100%;opacity:1}17%,100%{left:100%;opacity:0}}
+.featured-film{width:100%;max-width:none;margin:0;padding:0!important;background:#061522;line-height:0;overflow:hidden}
+.featured-film video{display:block;width:100%;height:clamp(390px,56vw,820px);object-fit:cover;object-position:center;background:#061522}
+.hero-copy{font-size:clamp(18px,1.48vw,21px);line-height:1.75}
+.intro p{font-size:clamp(18px,1.5vw,21px);line-height:1.8}
+.three p{font-size:clamp(16px,1.14vw,18px);line-height:1.75}
+.three h3{font-size:clamp(24px,2vw,29px)}
+.contact-panel p{font-size:17px}
+@media(max-width:760px){
+ .hero-art{min-height:290px}.hero-art img{max-height:270px}
+ .blade-cut{width:118%;left:-9%;bottom:14%}
+ .featured-film video{height:clamp(300px,65vh,580px);object-position:50% 50%}
+ .hero-copy,.intro p{font-size:17px;line-height:1.75}
+ .three p{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.blade-reflection::before,.blade-spark{animation:none!important;opacity:0!important}}
