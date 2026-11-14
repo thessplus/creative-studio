@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><link rel="icon" type="image/png" href="../assets/studio_emblem.png"><link rel="stylesheet" href="../styles.css"><title>Contact | ss+ Creative Studio</title></head><body><div class="site"><header class="nav wrap"><a aria-label="ss+ Creative Studio, home" class="brand" href="../"><img alt="ss+ intertwined metallic studio emblem" src="../assets/studio_emblem.png"/><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br/>Studio</span></span></a><nav aria-label="Main navigation" class="links"><a  href="../">Home</a><a class="nav-contact" aria-current="page" href="../contact/">Hit us up</a></nav></header><main class="legal-main wrap"><section class="contact-hero studio-contact"><div><span class="eyebrow">Have something in mind?</span><h1>Hit us <em>up.</em></h1><p>Questions, ideas, and creative collaborations are always welcome. We'd love to hear what you're thinking.</p><a class="textlink" href="../">Back to home <span aria-hidden="true">↖</span></a></div><div class="contact-panel form-card">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><link rel="icon" type="image/png" href="../assets/studio_emblem.png"><link rel="stylesheet" href="../styles.css"><title>Contact | ss+ Creative Studio</title><style>#ssplus-success[hidden]{display:none!important}.form-feedback:empty{display:none}</style></head><body><div class="site"><header class="nav wrap"><a aria-label="ss+ Creative Studio, home" class="brand" href="../"><img alt="ss+ intertwined metallic studio emblem" src="../assets/studio_emblem.png"/><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br/>Studio</span></span></a><nav aria-label="Main navigation" class="links"><a  href="../">Home</a><a class="nav-contact" aria-current="page" href="../contact/">Hit us up</a></nav></header><main class="legal-main wrap"><section class="contact-hero studio-contact"><div><span class="eyebrow">Have something in mind?</span><h1>Hit us <em>up.</em></h1><p>Questions, ideas, and creative collaborations are always welcome. We'd love to hear what you're thinking.</p><a class="textlink" href="../">Back to home <span aria-hidden="true">↖</span></a></div><div class="contact-panel form-card">
   <div class="form-heading"><span class="form-eyebrow">CONTACT THE STUDIO</span><h2>Send a message.</h2><p>Tell us what you have in mind.</p></div>
   <form id="contact-inquiry" class="inquiry-form" method="POST" target="ssplus-response-frame" autocomplete="on">
     <input type="hidden" name="request_id" id="ssplus-request-id">
@@ -12,82 +12,79 @@
     <label for="studio-message"><span class="field-label">What's on your mind? <b aria-hidden="true">*</b></span><textarea id="studio-message" name="message" rows="5" maxlength="2450" placeholder="Tell us about your idea, question, or creative collaboration…" required></textarea></label>
     <label class="consent-row"><input type="checkbox" name="consent" value="yes" required><span>I agree to have my details used to respond to this inquiry, as described in the <a href="../privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
     <div class="form-actions"><button type="submit" id="send-inquiry">Send message <span aria-hidden="true">↗</span></button><span class="form-discretion">Your details are used to respond to your inquiry.</span></div>
-    <p id="copy-feedback" role="status" aria-live="polite" class="form-feedback" hidden></p>
+    <p id="copy-feedback" role="status" aria-live="polite" class="form-feedback"></p>
     <div id="ssplus-success" hidden role="status" aria-live="polite" class="form-success"><strong>Message received.</strong><p>Thank you for reaching out. We'll reply using the details you provided.</p></div>
   </form>
   <iframe name="ssplus-response-frame" id="ssplus-response-frame" title="Inquiry processing" style="display:none" aria-hidden="true"></iframe>
 </div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="../contact/">Contact</a> · <a href="../privacy-policy/">Privacy Policy</a> · <a href="../accessibility/">Accessibility</a></span></footer><script>document.getElementById("year").textContent=new Date().getFullYear();</script><script>
-// Submit to the same Google Apps Script deployment used by Skilled Services Plus.
-// This page never claims an inquiry was received without a server confirmation.
+// Same verified submission handler as the Skilled Services Plus homepage.
+// No modifications to Google Apps Script or the parent website.
 const SSPLUS_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw0jfU9uzN_qRJfU-tJsKEQlW2Z_xmgxFFN9DNziqvqNoXAnJtr4KEfVWtTO-KbkwYg/exec';
 const inquiryForm = document.getElementById('contact-inquiry');
 const inquiryFeedback = document.getElementById('copy-feedback');
 const inquirySuccess = document.getElementById('ssplus-success');
 const inquiryButton = document.getElementById('send-inquiry');
-const inquiryFrame = document.getElementById('ssplus-response-frame');
-const inquiryMessage = document.getElementById('studio-message');
 let pendingInquiry = null;
 let statusTimer = null;
 let pollCount = 0;
-function feedback(text) { inquiryFeedback.textContent = text; inquiryFeedback.hidden = !text; }
+
 function endPending() {
-  clearTimeout(statusTimer);
   pendingInquiry = null;
+  clearTimeout(statusTimer);
   inquiryButton.disabled = false;
 }
-function savedSuccessfully(id) {
-  if (!pendingInquiry || id !== pendingInquiry) return;
-  endPending();
-  inquiryForm.reset();
-  feedback('');
-  inquirySuccess.hidden = false;
-  inquirySuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-// The existing Apps Script POST replies with a message sent to its parent frame.
-window.addEventListener('message', function(event) {
-  if (event.source !== inquiryFrame.contentWindow) return;
-  if (!/^https:\/\/(?:script\.google\.com|(?:[a-z0-9-]+\.)?googleusercontent\.com)$/.test(event.origin)) return;
-  const data = event.data;
-  if (!data || data.type !== 'ssplus-contact-result' || data.requestId !== pendingInquiry) return;
-  if (data.ok === true) savedSuccessfully(data.requestId);
-  else if (data.ok === false) { endPending(); feedback('Your message could not be saved. Please try again.'); }
-});
-// Fallback: read the server's saved flag for the random request ID.
-window.ssplusStatusCallback = function(result) {
-  if (result && result.saved === true && result.requestId === pendingInquiry) savedSuccessfully(result.requestId);
+
+// A script tag can load an Apps Script GET response across origins without CORS.
+// The GET only returns success/failure for a random request ID, never client details.
+window.ssplusStatusCallback = function (result) {
+  if (!pendingInquiry || !result || result.requestId !== pendingInquiry) return;
+  if (result.saved === true) {
+    endPending();
+    inquiryForm.reset();
+    inquiryFeedback.textContent = '';
+    inquirySuccess.hidden = false;
+    inquirySuccess.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
 };
+
 function checkSubmissionStatus(id) {
   if (pendingInquiry !== id) return;
   if (pollCount >= 16) {
     endPending();
-    feedback('We could not confirm delivery. Please check the inquiries spreadsheet before trying again.');
+    inquiryFeedback.textContent = 'We could not confirm the response. Your inquiry may already be saved. Please contact us or check before submitting again.';
     return;
   }
   pollCount++;
   const script = document.createElement('script');
   script.src = SSPLUS_FORM_ENDPOINT + '?action=status&request_id=' + encodeURIComponent(id)
     + '&callback=ssplusStatusCallback&_=' + Date.now();
-  script.onload = script.onerror = () => script.remove();
+  script.onerror = () => script.remove();
+  script.onload = () => script.remove();
   document.head.appendChild(script);
   statusTimer = setTimeout(() => checkSubmissionStatus(id), 1800);
 }
-inquiryForm.addEventListener('submit', function(event) {
+
+inquiryForm.addEventListener('submit', (event) => {
   if (pendingInquiry) { event.preventDefault(); return; }
-  if (!inquiryForm.reportValidity()) { event.preventDefault(); return; }
-  if (!SSPLUS_FORM_ENDPOINT.endsWith('/exec')) { event.preventDefault(); feedback('The contact form is unavailable.'); return; }
-  const id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
-    : (String(Date.now()) + '-' + Math.random().toString(36).slice(2));
-  document.getElementById('ssplus-request-id').value = id;
-  // Retain this value until receipt is confirmed. Restoring it shortly after
-  // submit was a timing-dependent difference from the working ss+ form.
-  if (!inquiryMessage.value.startsWith('[ss+ Creative Studio] ')) inquiryMessage.value = '[ss+ Creative Studio] ' + inquiryMessage.value;
+  if (!SSPLUS_FORM_ENDPOINT.endsWith('/exec')) {
+    event.preventDefault();
+    inquiryFeedback.textContent = 'The contact form is temporarily unavailable.';
+    return;
+  }
+  const requestId = crypto.randomUUID ? crypto.randomUUID() :
+    String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+  document.getElementById('ssplus-request-id').value = requestId;
+  // Identify this venture in the existing shared tracker without changing its backend.
+  const message = inquiryForm.elements.namedItem('message');
+  if (message && !message.value.startsWith('[ss+ Creative Studio] ')) {
+    message.value = '[ss+ Creative Studio] ' + message.value;
+  }
+  pendingInquiry = requestId;
   inquiryForm.action = SSPLUS_FORM_ENDPOINT;
-  pendingInquiry = id;
-  pollCount = 0;
   inquiryButton.disabled = true;
   inquirySuccess.hidden = true;
-  feedback('Sending your message…');
-  statusTimer = setTimeout(() => checkSubmissionStatus(id), 1400);
-  // The browser submits the native POST to the hidden iframe; no page navigation.
-});
-</script></div></body></html>
+  inquiryFeedback.textContent = 'Sending your inquiry…';
+  pollCount = 0;
+  statusTimer = setTimeout(() => checkSubmissionStatus(requestId), 1400);
+  // Native POST to hidden iframe: browser does not navigate away.
+});</script></div></body></html>
