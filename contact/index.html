@@ -17,43 +17,77 @@
   </form>
   <iframe name="ssplus-response-frame" id="ssplus-response-frame" title="Inquiry processing" style="display:none" aria-hidden="true"></iframe>
 </div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="../contact/">Contact</a> · <a href="../privacy-policy/">Privacy Policy</a> · <a href="../accessibility/">Accessibility</a></span></footer><script>document.getElementById("year").textContent=new Date().getFullYear();</script><script>
-// Uses the existing ss+ Google Apps Script; success is shown ONLY after a
-// matching server-side status confirmation, never merely on form submit.
-const SSPLUS_FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbw0jfU9uzN_qRJfU-tJsKEQlW2Z_xmgxFFN9DNziqvqNoXAnJtr4KEfVWtTO-KbkwYg/exec';
-const form=document.getElementById('contact-inquiry');
-const feedback=document.getElementById('copy-feedback');
-const success=document.getElementById('ssplus-success');
-const button=document.getElementById('send-inquiry');
-const messageField=document.getElementById('studio-message');
-let pending=null,checks=0,pollTimer=null,originalMessage='';
-function setFeedback(value){feedback.textContent=value;feedback.hidden=!value;}
-function finishPending(){clearTimeout(pollTimer);pending=null;button.disabled=false;}
-function checkStatus(id){
-  if(pending!==id)return;
-  if(checks++>=16){finishPending();setFeedback('We could not verify receipt. The message may have been saved; please check before resending.');return;}
-  const s=document.createElement('script');
-  s.src=SSPLUS_FORM_ENDPOINT+'?action=status&request_id='+encodeURIComponent(id)+'&callback=ssplusStatusCallback&_='+Date.now();
-  s.onload=s.onerror=()=>s.remove();
-  document.head.appendChild(s);
-  pollTimer=setTimeout(()=>checkStatus(id),1800);
+// Submit to the same Google Apps Script deployment used by Skilled Services Plus.
+// This page never claims an inquiry was received without a server confirmation.
+const SSPLUS_FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw0jfU9uzN_qRJfU-tJsKEQlW2Z_xmgxFFN9DNziqvqNoXAnJtr4KEfVWtTO-KbkwYg/exec';
+const inquiryForm = document.getElementById('contact-inquiry');
+const inquiryFeedback = document.getElementById('copy-feedback');
+const inquirySuccess = document.getElementById('ssplus-success');
+const inquiryButton = document.getElementById('send-inquiry');
+const inquiryFrame = document.getElementById('ssplus-response-frame');
+const inquiryMessage = document.getElementById('studio-message');
+let pendingInquiry = null;
+let statusTimer = null;
+let pollCount = 0;
+function feedback(text) { inquiryFeedback.textContent = text; inquiryFeedback.hidden = !text; }
+function endPending() {
+  clearTimeout(statusTimer);
+  pendingInquiry = null;
+  inquiryButton.disabled = false;
 }
-window.ssplusStatusCallback=function(result){
- if(!pending||!result||result.requestId!==pending||result.saved!==true)return;
- finishPending();form.reset();messageField.value='';setFeedback('');success.hidden=false;
- success.scrollIntoView({behavior:'smooth',block:'nearest'});
+function savedSuccessfully(id) {
+  if (!pendingInquiry || id !== pendingInquiry) return;
+  endPending();
+  inquiryForm.reset();
+  feedback('');
+  inquirySuccess.hidden = false;
+  inquirySuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+// The existing Apps Script POST replies with a message sent to its parent frame.
+window.addEventListener('message', function(event) {
+  if (event.source !== inquiryFrame.contentWindow) return;
+  if (!/^https:\/\/(?:script\.google\.com|(?:[a-z0-9-]+\.)?googleusercontent\.com)$/.test(event.origin)) return;
+  const data = event.data;
+  if (!data || data.type !== 'ssplus-contact-result' || data.requestId !== pendingInquiry) return;
+  if (data.ok === true) savedSuccessfully(data.requestId);
+  else if (data.ok === false) { endPending(); feedback('Your message could not be saved. Please try again.'); }
+});
+// Fallback: read the server's saved flag for the random request ID.
+window.ssplusStatusCallback = function(result) {
+  if (result && result.saved === true && result.requestId === pendingInquiry) savedSuccessfully(result.requestId);
 };
-form.addEventListener('submit',e=>{
- if(pending){e.preventDefault();return;}
- if(!form.reportValidity()){e.preventDefault();return;}
- const id=(window.crypto&&crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2));
- document.getElementById('ssplus-request-id').value=id;
- originalMessage=messageField.value;
- messageField.value='[ss+ Creative Studio] '+originalMessage;
- form.action=SSPLUS_FORM_ENDPOINT;
- pending=id;checks=0;button.disabled=true;success.hidden=true;
- setFeedback('Sending your message…');
- // Restore what the visitor typed after browser has assembled native POST data.
- setTimeout(()=>{if(pending===id)messageField.value=originalMessage;},250);
- pollTimer=setTimeout(()=>checkStatus(id),1400);
+function checkSubmissionStatus(id) {
+  if (pendingInquiry !== id) return;
+  if (pollCount >= 16) {
+    endPending();
+    feedback('We could not confirm delivery. Please check the inquiries spreadsheet before trying again.');
+    return;
+  }
+  pollCount++;
+  const script = document.createElement('script');
+  script.src = SSPLUS_FORM_ENDPOINT + '?action=status&request_id=' + encodeURIComponent(id)
+    + '&callback=ssplusStatusCallback&_=' + Date.now();
+  script.onload = script.onerror = () => script.remove();
+  document.head.appendChild(script);
+  statusTimer = setTimeout(() => checkSubmissionStatus(id), 1800);
+}
+inquiryForm.addEventListener('submit', function(event) {
+  if (pendingInquiry) { event.preventDefault(); return; }
+  if (!inquiryForm.reportValidity()) { event.preventDefault(); return; }
+  if (!SSPLUS_FORM_ENDPOINT.endsWith('/exec')) { event.preventDefault(); feedback('The contact form is unavailable.'); return; }
+  const id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+    : (String(Date.now()) + '-' + Math.random().toString(36).slice(2));
+  document.getElementById('ssplus-request-id').value = id;
+  // Retain this value until receipt is confirmed. Restoring it shortly after
+  // submit was a timing-dependent difference from the working ss+ form.
+  if (!inquiryMessage.value.startsWith('[ss+ Creative Studio] ')) inquiryMessage.value = '[ss+ Creative Studio] ' + inquiryMessage.value;
+  inquiryForm.action = SSPLUS_FORM_ENDPOINT;
+  pendingInquiry = id;
+  pollCount = 0;
+  inquiryButton.disabled = true;
+  inquirySuccess.hidden = true;
+  feedback('Sending your message…');
+  statusTimer = setTimeout(() => checkSubmissionStatus(id), 1400);
+  // The browser submits the native POST to the hidden iframe; no page navigation.
 });
 </script></div></body></html>
