@@ -106,3 +106,36 @@
 .inquiry-form .consent-row span{flex:1}
 .inquiry-form .form-success[hidden],.inquiry-form .form-feedback:empty{display:none!important}
 @media(max-width:760px){.inquiry-form .form-grid{grid-template-columns:1fr}}
+
+/* V9: coherent studio form design; isolate it from generic contact styles */
+.studio-contact {align-items:center;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,88px)}
+.studio-contact .contact-panel.form-card {width:100%;max-width:none;padding:clamp(30px,3.3vw,50px);border:1px solid rgba(223,191,213,.23);background:linear-gradient(152deg,rgba(83,19,50,.36),rgba(9,28,48,.77));border-radius:3px;box-shadow:0 24px 60px rgba(0,0,0,.12)}
+.form-heading{padding-bottom:24px;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,.15)}
+.form-heading .form-eyebrow{font-size:10px;font-weight:700;letter-spacing:.23em;color:#d9b0bf}
+.studio-contact .form-heading h2{font:600 clamp(24px,2vw,30px)/1.2 Manrope,Arial,sans-serif;margin:10px 0 6px;letter-spacing:-.035em}
+.studio-contact .form-heading p{font-size:14px;line-height:1.5;margin:0;color:#aeb9c8}
+.studio-contact .inquiry-form{display:flex;flex-direction:column;gap:22px}
+.studio-contact .inquiry-form .form-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+.studio-contact .inquiry-form label:not(.consent-row){display:flex;flex-direction:column;gap:9px;min-width:0;font-size:13px;font-weight:600;color:#e8e6ed;letter-spacing:0}
+.studio-contact .field-label{display:inline-flex;align-items:baseline;gap:4px;white-space:normal;line-height:1.4}
+.studio-contact .field-label b{color:#f293aa;font-weight:600}
+.studio-contact .inquiry-form input:not([type=checkbox]):not([type=hidden]),.studio-contact .inquiry-form textarea{width:100%;min-height:52px;border:1px solid rgba(200,205,221,.32);border-radius:5px;background:rgba(7,20,36,.7);color:#fff;font:400 15px/1.55 'DM Sans',Arial,sans-serif;padding:14px 15px;box-shadow:none;transition:border-color .2s,background .2s}
+.studio-contact .inquiry-form input::placeholder,.studio-contact .inquiry-form textarea::placeholder{color:#8e9aab;opacity:1}
+.studio-contact .inquiry-form textarea{min-height:145px;resize:vertical}
+.studio-contact .inquiry-form input:focus,.studio-contact .inquiry-form textarea:focus{border-color:#e8a6bd;outline:2px solid rgba(232,166,189,.16);outline-offset:1px}
+.studio-contact .inquiry-form .consent-row{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:13px;color:#c4c6d0;line-height:1.65}
+.studio-contact .inquiry-form .consent-row input{margin:3px 0 0;width:18px;height:18px;flex:0 0 18px;accent-color:#e6223a}
+.studio-contact .inquiry-form .consent-row a{color:#f0a6bf;text-decoration:underline}
+.studio-contact .form-actions{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.studio-contact .form-actions button{border:1px solid #e6223a;background:#e6223a;color:#fff;padding:14px 21px;border-radius:4px;font:600 13px/1.4 'DM Sans',Arial,sans-serif;cursor:pointer;transition:background .2s}
+.studio-contact .form-actions button:hover{background:#b91e38}
+.studio-contact .form-actions button:disabled{opacity:.65;cursor:wait}
+.studio-contact .form-discretion{flex:1;min-width:150px;max-width:220px;font-size:12px;line-height:1.55;color:#abb5c4}
+.studio-contact [hidden],.studio-contact .inquiry-form [hidden]{display:none!important}
+.studio-contact .form-feedback{margin:0;font-size:13px;color:#e9c3d3}
+.studio-contact .form-success{border-left:2px solid #d5a9b9;padding:15px 18px;background:rgba(15,54,70,.6);border-radius:0 4px 4px 0}
+.studio-contact .form-success strong{font-size:16px}
+.studio-contact .form-success p{margin:5px 0 0;font-size:13px;line-height:1.6}
+.studio-contact .honeypot{position:absolute!important;left:-10000px!important;top:auto!important;height:1px!important;width:1px!important;overflow:hidden!important;pointer-events:none!important}
+@media(max-width:900px){.studio-contact{grid-template-columns:1fr}.studio-contact .contact-panel.form-card{max-width:720px}}
+@media(max-width:520px){.studio-contact .inquiry-form .form-grid{grid-template-columns:1fr}.studio-contact .form-actions{align-items:stretch;flex-direction:column}.studio-contact .form-actions button{width:100%}.studio-contact .contact-panel.form-card{padding:26px 22px}}
