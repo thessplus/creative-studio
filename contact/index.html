@@ -1,47 +1,59 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><link rel="icon" type="image/png" href="../assets/studio_emblem.png"><link rel="stylesheet" href="../styles.css"><title>Contact | ss+ Creative Studio</title></head><body><div class="site"><header class="nav wrap"><a aria-label="ss+ Creative Studio, home" class="brand" href="../"><img alt="ss+ intertwined metallic studio emblem" src="../assets/studio_emblem.png"/><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br/>Studio</span></span></a><nav aria-label="Main navigation" class="links"><a  href="../">Home</a><a class="nav-contact" aria-current="page" href="../contact/">Hit us up</a></nav></header><main class="legal-main wrap"><section class="contact-hero studio-contact"><div><span class="eyebrow">Have something in mind?</span><h1>Hit us <em>up.</em></h1><p>Questions, ideas, and creative collaborations are always welcome. We'd love to hear what you're thinking.</p><a class="textlink" href="../">Back to home <span aria-hidden="true">↖</span></a></div><div class="contact-panel form-card"><h2>Send a message.</h2><form id="contact-inquiry" class="inquiry-form" method="POST" target="ssplus-response-frame" autocomplete="on">
- <input type="hidden" name="request_id" id="ssplus-request-id">
- <div class="honeypot"><label>Leave this field empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
- <div class="form-grid"><label>First name <span aria-hidden="true">*</span><input name="first" type="text" autocomplete="given-name" required maxlength="80"></label><label>Last name <span aria-hidden="true">*</span><input name="last" type="text" autocomplete="family-name" required maxlength="80"></label></div>
- <div class="form-grid"><label>Email <span aria-hidden="true">*</span><input name="email" type="email" autocomplete="email" required maxlength="200"></label><label>Phone <span aria-hidden="true">*</span><input name="phone" type="tel" autocomplete="tel" maxlength="60" required></label></div>
- <label>What's on your mind? <span aria-hidden="true">*</span><textarea name="message" rows="5" maxlength="2500" placeholder="Tell us about your idea, question, or creative collaboration…" required></textarea></label>
- <label class="consent-row"><input type="checkbox" name="consent" value="yes" required><span>I agree to have my details used to respond to this inquiry, as described in the <a href="../privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
- <div class="form-bottom"><p>We use your details to respond to your inquiry.</p><button type="submit" id="send-inquiry">Send message <span aria-hidden="true">↗</span></button></div>
- <p id="copy-feedback" role="status" aria-live="polite" class="form-feedback"></p>
- <div id="ssplus-success" hidden style="display:none" role="status" aria-live="polite" class="form-success"><strong>Message received.</strong><p>Thank you for reaching out. We’ll get back to you using the details you provided.</p></div>
- </form><iframe name="ssplus-response-frame" id="ssplus-response-frame" title="Inquiry processing" style="display:none" aria-hidden="true"></iframe></div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="../contact/">Contact</a> · <a href="../privacy-policy/">Privacy Policy</a> · <a href="../accessibility/">Accessibility</a></span></footer><script>document.getElementById("year").textContent=new Date().getFullYear();</script><script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><link rel="icon" type="image/png" href="../assets/studio_emblem.png"><link rel="stylesheet" href="../styles.css"><title>Contact | ss+ Creative Studio</title></head><body><div class="site"><header class="nav wrap"><a aria-label="ss+ Creative Studio, home" class="brand" href="../"><img alt="ss+ intertwined metallic studio emblem" src="../assets/studio_emblem.png"/><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br/>Studio</span></span></a><nav aria-label="Main navigation" class="links"><a  href="../">Home</a><a class="nav-contact" aria-current="page" href="../contact/">Hit us up</a></nav></header><main class="legal-main wrap"><section class="contact-hero studio-contact"><div><span class="eyebrow">Have something in mind?</span><h1>Hit us <em>up.</em></h1><p>Questions, ideas, and creative collaborations are always welcome. We'd love to hear what you're thinking.</p><a class="textlink" href="../">Back to home <span aria-hidden="true">↖</span></a></div><div class="contact-panel form-card">
+  <div class="form-heading"><span class="form-eyebrow">CONTACT THE STUDIO</span><h2>Send a message.</h2><p>Tell us what you have in mind.</p></div>
+  <form id="contact-inquiry" class="inquiry-form" method="POST" target="ssplus-response-frame" autocomplete="on">
+    <input type="hidden" name="request_id" id="ssplus-request-id">
+    <div class="honeypot" aria-hidden="true"><label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="form-grid">
+      <label for="studio-first"><span class="field-label">First name <b aria-hidden="true">*</b></span><input id="studio-first" name="first" type="text" autocomplete="given-name" required maxlength="80" placeholder="First name"></label>
+      <label for="studio-last"><span class="field-label">Last name <b aria-hidden="true">*</b></span><input id="studio-last" name="last" type="text" autocomplete="family-name" required maxlength="80" placeholder="Last name"></label>
+      <label for="studio-email"><span class="field-label">Email <b aria-hidden="true">*</b></span><input id="studio-email" name="email" type="email" autocomplete="email" required maxlength="200" placeholder="you@example.com"></label>
+      <label for="studio-phone"><span class="field-label">Phone <b aria-hidden="true">*</b></span><input id="studio-phone" name="phone" type="tel" autocomplete="tel" maxlength="60" required placeholder="Phone number"></label>
+    </div>
+    <label for="studio-message"><span class="field-label">What's on your mind? <b aria-hidden="true">*</b></span><textarea id="studio-message" name="message" rows="5" maxlength="2450" placeholder="Tell us about your idea, question, or creative collaboration…" required></textarea></label>
+    <label class="consent-row"><input type="checkbox" name="consent" value="yes" required><span>I agree to have my details used to respond to this inquiry, as described in the <a href="../privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+    <div class="form-actions"><button type="submit" id="send-inquiry">Send message <span aria-hidden="true">↗</span></button><span class="form-discretion">Your details are used to respond to your inquiry.</span></div>
+    <p id="copy-feedback" role="status" aria-live="polite" class="form-feedback" hidden></p>
+    <div id="ssplus-success" hidden role="status" aria-live="polite" class="form-success"><strong>Message received.</strong><p>Thank you for reaching out. We'll reply using the details you provided.</p></div>
+  </form>
+  <iframe name="ssplus-response-frame" id="ssplus-response-frame" title="Inquiry processing" style="display:none" aria-hidden="true"></iframe>
+</div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="../contact/">Contact</a> · <a href="../privacy-policy/">Privacy Policy</a> · <a href="../accessibility/">Accessibility</a></span></footer><script>document.getElementById("year").textContent=new Date().getFullYear();</script><script>
+// Uses the existing ss+ Google Apps Script; success is shown ONLY after a
+// matching server-side status confirmation, never merely on form submit.
 const SSPLUS_FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbw0jfU9uzN_qRJfU-tJsKEQlW2Z_xmgxFFN9DNziqvqNoXAnJtr4KEfVWtTO-KbkwYg/exec';
 const form=document.getElementById('contact-inquiry');
 const feedback=document.getElementById('copy-feedback');
 const success=document.getElementById('ssplus-success');
 const button=document.getElementById('send-inquiry');
-let pending=null, pollCount=0, pollTimer=null;
-function endPending(){pending=null;clearTimeout(pollTimer);button.disabled=false;}
-window.ssplusStatusCallback=function(result){
- if(!pending||!result||result.requestId!==pending)return;
- if(result.saved===true){endPending();form.reset();feedback.textContent='';success.hidden=false;success.style.display='block';success.scrollIntoView({behavior:'smooth',block:'nearest'});}
-};
+const messageField=document.getElementById('studio-message');
+let pending=null,checks=0,pollTimer=null,originalMessage='';
+function setFeedback(value){feedback.textContent=value;feedback.hidden=!value;}
+function finishPending(){clearTimeout(pollTimer);pending=null;button.disabled=false;}
 function checkStatus(id){
- if(pending!==id)return;
- if(pollCount++>=16){endPending();feedback.textContent='We could not confirm receipt. Your message may have been saved. Please check before sending it again.';return;}
- const s=document.createElement('script');
- s.src=SSPLUS_FORM_ENDPOINT+'?action=status&request_id='+encodeURIComponent(id)+'&callback=ssplusStatusCallback&_='+Date.now();
- s.onload=s.onerror=()=>s.remove();document.head.appendChild(s);
- pollTimer=setTimeout(()=>checkStatus(id),1800);
+  if(pending!==id)return;
+  if(checks++>=16){finishPending();setFeedback('We could not verify receipt. The message may have been saved; please check before resending.');return;}
+  const s=document.createElement('script');
+  s.src=SSPLUS_FORM_ENDPOINT+'?action=status&request_id='+encodeURIComponent(id)+'&callback=ssplusStatusCallback&_='+Date.now();
+  s.onload=s.onerror=()=>s.remove();
+  document.head.appendChild(s);
+  pollTimer=setTimeout(()=>checkStatus(id),1800);
 }
-form.addEventListener('submit',event=>{
- if(pending){event.preventDefault();return;}
- const id=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2));
+window.ssplusStatusCallback=function(result){
+ if(!pending||!result||result.requestId!==pending||result.saved!==true)return;
+ finishPending();form.reset();messageField.value='';setFeedback('');success.hidden=false;
+ success.scrollIntoView({behavior:'smooth',block:'nearest'});
+};
+form.addEventListener('submit',e=>{
+ if(pending){e.preventDefault();return;}
+ if(!form.reportValidity()){e.preventDefault();return;}
+ const id=(window.crypto&&crypto.randomUUID?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2));
  document.getElementById('ssplus-request-id').value=id;
- // The existing shared Apps Script stores only the standard fields. Label the
- // message itself so the shared spreadsheet can identify its source without
- // modifying or redeploying the production Apps Script.
- const messageField=form.elements.namedItem('message');
- const sourceTag='[ss+ Creative Studio] ';
- if(messageField && !messageField.value.startsWith(sourceTag)){
-   messageField.value=sourceTag+messageField.value;
- }
- form.action=SSPLUS_FORM_ENDPOINT; pending=id;pollCount=0;
- button.disabled=true;success.hidden=true;success.style.display='none';feedback.textContent='Sending your message…';
+ originalMessage=messageField.value;
+ messageField.value='[ss+ Creative Studio] '+originalMessage;
+ form.action=SSPLUS_FORM_ENDPOINT;
+ pending=id;checks=0;button.disabled=true;success.hidden=true;
+ setFeedback('Sending your message…');
+ // Restore what the visitor typed after browser has assembled native POST data.
+ setTimeout(()=>{if(pending===id)messageField.value=originalMessage;},250);
  pollTimer=setTimeout(()=>checkStatus(id),1400);
 });
 </script></div></body></html>
