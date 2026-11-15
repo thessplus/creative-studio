@@ -1,8 +1,22 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><meta name="description" content="ss+ Creative Studio develops original stories and creative media across formats. An independent home for curiosity, storytelling, and ideas."><link rel="icon" type="image/png" href="assets/studio_emblem.png"><link rel="stylesheet" href="styles.css">
 <link rel="canonical" href="https://thessplus.github.io/creative-studio/"><title>ss+ Creative Studio | Original works, thoughtfully made</title><style>
-/* Approved founder artwork: seamless photographic/editorial section */
-.founder-art-section{position:relative;background:radial-gradient(ellipse at 15% 25%,rgba(105,7,54,.17),transparent 55%),#071423;overflow:hidden;padding:56px 24px!important;border-top:1px solid rgba(255,255,255,.08)}
-.founder-art-section .founder-art{display:block;width:100%;max-width:980px!important;height:auto;margin:0 auto;object-fit:contain}
+/* Founder artwork: keep the approved composition at its current size,
+   while visually continuing its pink/blue lighting across the page. */
+.founder-art-section{
+ position:relative;overflow:hidden;
+ padding:44px 18px!important;
+ border-top:1px solid rgba(255,255,255,.055);
+ background:
+  radial-gradient(ellipse 43% 80% at 5% 53%,rgba(120,24,71,.48),transparent 90%),
+  radial-gradient(ellipse 45% 75% at 97% 72%,rgba(0,82,141,.48),transparent 92%),
+  linear-gradient(90deg,#221127 0%,#071427 47%,#04162d 100%);
+}
+.founder-art-section .founder-art{
+ display:block;width:100%;max-width:980px!important;height:auto;
+ margin:0 auto;object-fit:contain;
+ -webkit-mask-image:radial-gradient(ellipse 74% 78% at 50% 50%,#000 70%,transparent 100%);
+ mask-image:radial-gradient(ellipse 74% 78% at 50% 50%,#000 70%,transparent 100%);
+}
 .founder-art-section .founder-mobile-copy{display:none}
 .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 @media(max-width:700px){
