@@ -74,68 +74,15 @@
 }
 @media(prefers-reduced-motion:reduce){.blade-reflection::before,.blade-spark{animation:none!important;opacity:0!important}}
 
-/* V6: clean-url legal pages and shared ss+ inquiry form */
-.legal-main{min-height:60vh}.studio-contact{gap:clamp(30px,5vw,80px);align-items:start}.studio-contact h1 em{font-style:normal;color:#e5c4ce}
-.form-card{max-width:690px;width:100%;padding:clamp(25px,3vw,43px)}.form-card h2{margin:0 0 25px}
-.inquiry-form{display:grid;gap:19px}.inquiry-form label{display:grid;gap:8px;color:#e4e8f2;font-size:14px;font-weight:600;letter-spacing:.02em}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.inquiry-form input:not([type=checkbox]),.inquiry-form textarea{display:block;width:100%;background:#0c1828;color:#f8f7fa;border:1px solid #536074;border-radius:8px;padding:13px 14px;font:inherit;font-size:16px;box-sizing:border-box}
-.inquiry-form textarea{resize:vertical;min-height:130px}
-.inquiry-form input:focus-visible,.inquiry-form textarea:focus-visible,.inquiry-form button:focus-visible{outline:3px solid #e7a6c2;outline-offset:3px}
-.inquiry-form .consent-row{display:flex;gap:12px;align-items:flex-start;font-size:13px;font-weight:400;line-height:1.6;color:#c2cbd9}
-.consent-row input{width:19px;height:19px;accent-color:#e6223a;flex:none;margin-top:2px}.consent-row a,.legal-copy a{color:#f4a9c9;text-underline-offset:3px}
-.form-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px}.form-bottom p{font-size:12px;max-width:270px;color:#b6bdce;margin:0}
-.form-bottom button{background:#e6223a;color:white;border:0;border-radius:6px;padding:14px 19px;cursor:pointer;font:600 14px inherit;white-space:nowrap}
-.form-bottom button:disabled{opacity:.55;cursor:progress}
-.form-feedback{color:#e6cfda!important;font-size:14px!important;margin:0!important}.form-success{border-left:3px solid #a8cad4;padding:12px 16px;background:#172c3b}.form-success p{font-size:14px}
-.honeypot{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.legal-copy{max-width:850px;margin:clamp(55px,8vw,110px) auto 95px}.legal-copy h1{font-size:clamp(44px,6vw,77px);line-height:1.1;margin:18px 0 30px;color:#f8f7fa}.legal-copy h2{font-size:clamp(22px,2.4vw,29px);margin:36px 0 10px;color:#f9f7fb}.legal-copy p{color:#bdc7d5;font-size:clamp(17px,1.4vw,20px);line-height:1.8;margin:0 0 18px}
-@media(max-width:760px){.studio-contact{display:block}.studio-contact .contact-panel{margin-top:34px}.form-grid{grid-template-columns:1fr}.form-bottom{align-items:stretch;flex-direction:column}.form-bottom button{width:100%}.legal-copy{margin:48px 0 75px}}
-
-/* V8: robust contact form visibility and layout */
-[hidden], .inquiry-form [hidden]{display:none!important}
-.inquiry-form .honeypot{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;white-space:nowrap!important;pointer-events:none!important}
-.inquiry-form .honeypot input{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important}
-.inquiry-form .form-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.inquiry-form .form-grid > label{min-width:0}
-.inquiry-form > label:not(.consent-row){display:grid;gap:9px}
-.inquiry-form input:not([type=checkbox]):not([type=hidden]),.inquiry-form textarea{min-width:0;width:100%;background:#101e31;border:1px solid #69758a;border-radius:7px;padding:13px 14px;color:#f6f4f4;font:400 16px/1.5 Arial,sans-serif;outline-offset:3px}
-.inquiry-form textarea{resize:vertical;min-height:135px}
-.inquiry-form .consent-row{display:flex!important;align-items:flex-start;gap:12px}
-.inquiry-form .consent-row input[type=checkbox]{width:19px;height:19px;flex:0 0 19px;margin:3px 0 0}
-.inquiry-form .consent-row span{flex:1}
-.inquiry-form .form-success[hidden],.inquiry-form .form-feedback:empty{display:none!important}
-@media(max-width:760px){.inquiry-form .form-grid{grid-template-columns:1fr}}
-
-/* V9: coherent studio form design; isolate it from generic contact styles */
-.studio-contact {align-items:center;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,88px)}
-.studio-contact .contact-panel.form-card {width:100%;max-width:none;padding:clamp(30px,3.3vw,50px);border:1px solid rgba(223,191,213,.23);background:linear-gradient(152deg,rgba(83,19,50,.36),rgba(9,28,48,.77));border-radius:3px;box-shadow:0 24px 60px rgba(0,0,0,.12)}
-.form-heading{padding-bottom:24px;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,.15)}
-.form-heading .form-eyebrow{font-size:10px;font-weight:700;letter-spacing:.23em;color:#d9b0bf}
-.studio-contact .form-heading h2{font:600 clamp(24px,2vw,30px)/1.2 Manrope,Arial,sans-serif;margin:10px 0 6px;letter-spacing:-.035em}
-.studio-contact .form-heading p{font-size:14px;line-height:1.5;margin:0;color:#aeb9c8}
-.studio-contact .inquiry-form{display:flex;flex-direction:column;gap:22px}
-.studio-contact .inquiry-form .form-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
-.studio-contact .inquiry-form label:not(.consent-row){display:flex;flex-direction:column;gap:9px;min-width:0;font-size:13px;font-weight:600;color:#e8e6ed;letter-spacing:0}
-.studio-contact .field-label{display:inline-flex;align-items:baseline;gap:4px;white-space:normal;line-height:1.4}
-.studio-contact .field-label b{color:#f293aa;font-weight:600}
-.studio-contact .inquiry-form input:not([type=checkbox]):not([type=hidden]),.studio-contact .inquiry-form textarea{width:100%;min-height:52px;border:1px solid rgba(200,205,221,.32);border-radius:5px;background:rgba(7,20,36,.7);color:#fff;font:400 15px/1.55 'DM Sans',Arial,sans-serif;padding:14px 15px;box-shadow:none;transition:border-color .2s,background .2s}
-.studio-contact .inquiry-form input::placeholder,.studio-contact .inquiry-form textarea::placeholder{color:#8e9aab;opacity:1}
-.studio-contact .inquiry-form textarea{min-height:145px;resize:vertical}
-.studio-contact .inquiry-form input:focus,.studio-contact .inquiry-form textarea:focus{border-color:#e8a6bd;outline:2px solid rgba(232,166,189,.16);outline-offset:1px}
-.studio-contact .inquiry-form .consent-row{display:flex;gap:12px;align-items:flex-start;font-weight:400;font-size:13px;color:#c4c6d0;line-height:1.65}
-.studio-contact .inquiry-form .consent-row input{margin:3px 0 0;width:18px;height:18px;flex:0 0 18px;accent-color:#e6223a}
-.studio-contact .inquiry-form .consent-row a{color:#f0a6bf;text-decoration:underline}
-.studio-contact .form-actions{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.studio-contact .form-actions button{border:1px solid #e6223a;background:#e6223a;color:#fff;padding:14px 21px;border-radius:4px;font:600 13px/1.4 'DM Sans',Arial,sans-serif;cursor:pointer;transition:background .2s}
-.studio-contact .form-actions button:hover{background:#b91e38}
-.studio-contact .form-actions button:disabled{opacity:.65;cursor:wait}
-.studio-contact .form-discretion{flex:1;min-width:150px;max-width:220px;font-size:12px;line-height:1.55;color:#abb5c4}
-.studio-contact [hidden],.studio-contact .inquiry-form [hidden]{display:none!important}
-.studio-contact .form-feedback{margin:0;font-size:13px;color:#e9c3d3}
-.studio-contact .form-success{border-left:2px solid #d5a9b9;padding:15px 18px;background:rgba(15,54,70,.6);border-radius:0 4px 4px 0}
-.studio-contact .form-success strong{font-size:16px}
-.studio-contact .form-success p{margin:5px 0 0;font-size:13px;line-height:1.6}
-.studio-contact .honeypot{position:absolute!important;left:-10000px!important;top:auto!important;height:1px!important;width:1px!important;overflow:hidden!important;pointer-events:none!important}
-@media(max-width:900px){.studio-contact{grid-template-columns:1fr}.studio-contact .contact-panel.form-card{max-width:720px}}
-@media(max-width:520px){.studio-contact .inquiry-form .form-grid{grid-template-columns:1fr}.studio-contact .form-actions{align-items:stretch;flex-direction:column}.studio-contact .form-actions button{width:100%}.studio-contact .contact-panel.form-card{padding:26px 22px}}
+/* Founder story: large editorial type and the existing studio font pairing. */
+.founder-section{position:relative;isolation:isolate;overflow:hidden;padding:105px 0 112px;border-top:1px solid rgba(255,255,255,.12);background:radial-gradient(ellipse at 9% 28%,rgba(105,7,34,.28),transparent 48%),radial-gradient(ellipse at 98% 88%,rgba(6,42,72,.35),transparent 45%),#080f1a}
+.founder-inner{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(48px,6vw,100px);align-items:center}
+.founder-portrait{position:relative;min-height:630px;overflow:hidden;background:#0d1323;box-shadow:0 28px 70px rgba(0,0,0,.22)}
+.founder-portrait img{display:block;width:100%;height:100%;min-height:630px;object-fit:cover;object-position:center center}
+.founder-portrait:after{content:'';position:absolute;inset:0;border:1px solid rgba(255,255,255,.09);pointer-events:none}
+.founder-story{padding:22px 0;max-width:690px}
+.founder-story h2{font-family:Manrope,Arial,sans-serif;font-size:clamp(42px,4.5vw,70px);font-weight:650;line-height:1.09;letter-spacing:-.058em;margin:24px 0 42px;max-width:690px}
+.founder-story h2 em{font-style:normal;color:#dfafc1}
+.founder-story p{font-family:'DM Sans',Arial,sans-serif;font-size:clamp(21px,1.8vw,27px);font-weight:400;line-height:1.72;letter-spacing:-.018em;color:#e0e2e9;margin:0;max-width:660px}
+@media(max-width:900px){.founder-section{padding:80px 0}.founder-inner{gap:32px;grid-template-columns:1fr 1.1fr}.founder-portrait,.founder-portrait img{min-height:540px}.founder-story h2{font-size:clamp(38px,5vw,54px);margin:20px 0 26px}.founder-story p{font-size:19px;line-height:1.7}}
+@media(max-width:690px){.founder-section{padding:66px 0 78px}.founder-inner{grid-template-columns:1fr;gap:38px}.founder-portrait,.founder-portrait img{min-height:0;height:auto;max-height:530px}.founder-portrait img{object-fit:cover;object-position:50% 33%;aspect-ratio:4/5}.founder-story{padding:0}.founder-story h2{font-size:clamp(40px,11vw,57px);margin:18px 0 26px}.founder-story p{font-size:20px;line-height:1.72}}
