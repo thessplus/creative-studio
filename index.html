@@ -36,7 +36,9 @@
 }
 .channels-inner { max-width: 1320px; margin: auto; }
 .channels-heading { text-align: center; margin-bottom: 34px; }
-.channels-label { display:block; color:#e0d9e7; font-size:12px; text-transform:uppercase; letter-spacing:.3em; font-weight:700; margin-bottom:13px; }
+.channels-label { display:block; color:#d3a6bb; font-size:13px; text-transform:uppercase; letter-spacing:.3em; font-weight:600; margin-bottom:13px; }
+/* Align the section labels with the studio's existing rose-pink typography. */
+.section-index { font-size:13px; }
 .channels-heading h2 { font-size:clamp(30px,4vw,48px); line-height:1.1; margin:0; color:#fff; font-weight:750; letter-spacing:-.035em; }
 .channels-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
 .channel-card {
@@ -50,10 +52,19 @@
 }
 .channel-card:hover,.channel-card:focus-visible { transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.32); outline-offset:3px; }
 .channel-card.mithi { border-color:rgba(255,125,102,.9); background:linear-gradient(125deg,#182350 0%,#3c205d 58%,#3f1c56 100%); }
-.channel-media { width:52%; flex:0 0 52%; display:flex; align-items:center; justify-content:center; min-width:0; }
-.channel-media img { display:block; max-width:100%; height:auto; object-fit:contain; }
-.channel-card.originals .channel-media img { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:10px; }
-.channel-card.mithi .channel-media img { max-height:205px; width:auto; border-radius:50%; }
+.channel-media { width:180px; flex:0 0 180px; display:flex; align-items:center; justify-content:center; min-width:0; }
+.channel-avatar {
+  width:180px; height:180px; border-radius:50%; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+}
+.channel-media img {
+  display:block; width:100%; height:100%; object-fit:cover;
+}
+.channel-card.mithi .channel-avatar { background:rgba(255,255,255,.04); }
+.channel-card.mithi .channel-media img { object-fit:contain; }
 .channel-copy { flex:1; min-width:0; }
 .channel-copy h3 { font-size:clamp(18px,2.1vw,26px); margin:0 0 12px; line-height:1.15; color:white; }
 .channel-copy p { font-size:clamp(13px,1.25vw,16px); line-height:1.48; margin:0 0 26px; color:#e3e7f2; }
@@ -62,12 +73,12 @@
 @media (max-width:860px) {
  .channels-grid { grid-template-columns:1fr; max-width:640px; margin:auto; }
  .channel-card { min-height:240px; }
+ .channel-media, .channel-avatar { width:160px; height:160px; flex-basis:160px; }
 }
 @media (max-width:540px) {
  .channels-section { padding:54px 16px 58px; }
- .channel-card { min-height:0; padding:17px; gap:14px; border-radius:18px; }
- .channel-media { flex-basis:44%; width:44%; }
- .channel-card.mithi .channel-media img { max-height:155px; }
+ .channel-card { min-height:180px; padding:17px; gap:14px; border-radius:18px; align-items:center; }
+ .channel-media, .channel-avatar { width:112px; height:112px; flex-basis:112px; }
  .channel-copy h3 { font-size:19px; margin-bottom:9px; }
  .channel-copy p { font-size:13px; margin-bottom:14px; }
  .channel-action { font-size:12px; }
@@ -85,11 +96,11 @@
     </div>
     <div class="channels-grid">
       <a class="channel-card originals" href="https://www.youtube.com/@ssplusoriginals" target="_blank" rel="noopener noreferrer" aria-label="Visit ss+ Originals on YouTube (opens in a new tab)">
-        <div class="channel-media"><img src="assets/ss-originals-channel.jpg" alt="Official ss+ Originals banner and metallic logo" loading="lazy"></div>
+        <div class="channel-media"><div class="channel-avatar"><img src="assets/ss-originals-circle.png" alt="Official ss+ Originals circular logo" loading="lazy"></div></div>
         <div class="channel-copy"><h3>ss+ Originals</h3><p>Films and stories exploring people, places, and ideas.</p><span class="channel-action"><svg viewBox="0 0 24 18" role="presentation" aria-hidden="true"><rect x="0" y="1" width="24" height="16" rx="4" fill="#ff0033"/><path d="M10 5.25 16 9l-6 3.75z" fill="#fff"/></svg> Watch on YouTube ↗</span></div>
       </a>
       <a class="channel-card mithi" href="https://www.youtube.com/@atingmithi" target="_blank" rel="noopener noreferrer" aria-label="Visit Mithi on YouTube (opens in a new tab)">
-        <div class="channel-media"><img src="assets/mithi-channel.png" alt="Official Mithi logo with purple sky, golden stars, and sunrise" loading="lazy"></div>
+        <div class="channel-media"><div class="channel-avatar"><img src="assets/mithi-channel.png" alt="Official Mithi logo with purple sky, golden stars, and sunrise" loading="lazy"></div></div>
         <div class="channel-copy"><h3>Mithi</h3><p>Stories for Filipino children, rooted in values and imagination.</p><span class="channel-action"><svg viewBox="0 0 24 18" role="presentation" aria-hidden="true"><rect x="0" y="1" width="24" height="16" rx="4" fill="#ff0033"/><path d="M10 5.25 16 9l-6 3.75z" fill="#fff"/></svg> Watch on YouTube ↗</span></div>
       </a>
     </div>
