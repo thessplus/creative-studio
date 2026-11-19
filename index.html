@@ -40,48 +40,45 @@
 /* Align the section labels with the studio's existing rose-pink typography. */
 .section-index { font-size:13px; }
 .channels-heading h2 { font-size:clamp(30px,4vw,48px); line-height:1.1; margin:0; color:#fff; font-weight:750; letter-spacing:-.035em; }
-.channels-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.channels-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); align-items:stretch; gap:20px; }
 .channel-card {
-  display:flex; align-items:center; min-height:270px; padding:24px;
-  gap:24px; border:1px solid rgba(29,184,249,.75);
-  border-radius:24px; overflow:hidden; text-decoration:none;
-  color:white; position:relative;
+  display:grid; grid-template-columns:minmax(0,42%) minmax(0,58%);
+  align-items:center; min-height:292px; padding:28px; gap:0;
+  border:1px solid rgba(29,184,249,.75); border-radius:24px;
+  overflow:hidden; text-decoration:none; color:white; position:relative;
   background:linear-gradient(120deg,#070e1d,#10233c);
   box-shadow:0 12px 35px rgba(0,0,0,.19);
-  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  transition:transform .2s ease,box-shadow .2s ease;
 }
 .channel-card:hover,.channel-card:focus-visible { transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.32); outline-offset:3px; }
 .channel-card.mithi { border-color:rgba(255,125,102,.9); background:linear-gradient(125deg,#182350 0%,#3c205d 58%,#3f1c56 100%); }
-.channel-media { width:180px; flex:0 0 180px; display:flex; align-items:center; justify-content:center; min-width:0; }
-.channel-avatar {
-  width:180px; height:180px; border-radius:50%; overflow:hidden;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.16);
-  box-shadow:0 10px 28px rgba(0,0,0,.28);
-}
-.channel-media img {
-  display:block; width:100%; height:100%; object-fit:cover;
-}
-.channel-card.mithi .channel-avatar { background:rgba(255,255,255,.04); }
-.channel-card.mithi .channel-media img { object-fit:contain; }
-.channel-copy { flex:1; min-width:0; }
-.channel-copy h3 { font-size:clamp(18px,2.1vw,26px); margin:0 0 12px; line-height:1.15; color:white; }
-.channel-copy p { font-size:clamp(13px,1.25vw,16px); line-height:1.48; margin:0 0 26px; color:#e3e7f2; }
+/* The circular artwork is itself the logo. Do not add a second frame around it. */
+.channel-media { display:flex; align-items:center; justify-content:center; min-width:0; }
+.channel-avatar { display:flex; width:100%; max-width:202px; aspect-ratio:1/1; align-items:center; justify-content:center; }
+.channel-avatar img { display:block; width:100%; height:100%; object-fit:contain; border:0; border-radius:0; box-shadow:none; }
+.channel-copy { min-width:0; border-left:1px solid rgba(255,255,255,.28); padding-left:28px; display:flex; flex-direction:column; justify-content:center; align-self:stretch; }
+.channel-copy h3 { font-size:clamp(20px,1.8vw,25px); margin:0 0 12px; line-height:1.2; color:white; }
+.channel-copy p { font-size:clamp(13px,1.18vw,16px); line-height:1.48; margin:0 0 24px; color:#e3e7f2; }
 .channel-action { display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:#fff; }
 .channel-action svg { width:22px; height:16px; flex:none; }
-@media (max-width:860px) {
- .channels-grid { grid-template-columns:1fr; max-width:640px; margin:auto; }
- .channel-card { min-height:240px; }
- .channel-media, .channel-avatar { width:160px; height:160px; flex-basis:160px; }
+@media(max-width:1020px) {
+ .channels-grid { grid-template-columns:1fr; max-width:670px; margin:auto; }
+ .channel-card { min-height:255px; }
 }
-@media (max-width:540px) {
+@media(max-width:540px) {
  .channels-section { padding:54px 16px 58px; }
- .channel-card { min-height:180px; padding:17px; gap:14px; border-radius:18px; align-items:center; }
- .channel-media, .channel-avatar { width:112px; height:112px; flex-basis:112px; }
- .channel-copy h3 { font-size:19px; margin-bottom:9px; }
- .channel-copy p { font-size:13px; margin-bottom:14px; }
- .channel-action { font-size:12px; }
+ .channels-grid { gap:16px; }
+ .channel-card { grid-template-columns:40% 60%; min-height:200px; padding:17px; border-radius:18px; }
+ .channel-avatar { max-width:135px; }
+ .channel-copy { padding-left:16px; }
+ .channel-copy h3 { font-size:18px; margin-bottom:7px; }
+ .channel-copy p { font-size:12px; margin-bottom:13px; }
+ .channel-action { font-size:12px; gap:5px; }
+ .channel-action svg { width:20px; }
+}
+@media(max-width:355px) {
+ .channel-card { grid-template-columns:37% 63%; padding:12px; }
+ .channel-copy { padding-left:12px; }
 }
 @media (prefers-reduced-motion:reduce) { .channel-card { transition:none; } }
 </style></head><body><div class="site"><header class="nav wrap"><a class="brand" href="./" aria-label="ss+ Creative Studio, home"><img src="assets/studio_emblem.png" alt="ss+ intertwined metallic studio emblem"><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br>Studio</span></span></a><nav class="links" aria-label="Main navigation"><a href="./" aria-current="page">Home</a><a href="contact/" class="nav-contact" >Hit us up</a></nav></header><main><section class="hero wrap"><div><div class="eyebrow">An independent creative media studio</div><h1>Good stories<br>begin with <em>curiosity.</em></h1><p class="hero-copy">We develop original stories, visual experiences, and creative works across formats. Guided by curiosity, shaped with care, and made to be shared.</p><a class="textlink" href="contact/">Reach us <span aria-hidden="true">↗</span></a></div><div class="hero-art" id="hero-logo"><img src="assets/studio_emblem.png" alt="Metallic silver, crimson and navy intertwined emblem, fully visible"><div class="blade-cut" aria-hidden="true"><span class="blade-reflection"></span><span class="blade-spark"></span></div></div></section><section class="featured-film" aria-label="Silent cinematic footage of Vietnam at night"><video autoplay muted loop playsinline preload="metadata" poster="assets/vietnam-city-after-dark-poster.jpg" aria-label="Nighttime city roads in Vietnam, illuminated buildings and passing traffic"><source src="assets/vietnam-city-after-dark.mp4" type="video/mp4"></video></section><div class="rule wrap"></div><section class="intro wrap"><div><span class="section-index">Our studio</span><h2>Ideas don't have to fit into one format.</h2></div><p>From moving images to written stories and visual art, we explore the medium that best serves each idea. We're building a home for original work that informs, entertains, inspires, or simply offers another way of looking at the world.</p></section><section class="three wrap" aria-label="What we create"><article><span class="num">01 /</span><h3>Stories</h3><p>Thoughtful narratives, original concepts, and fresh perspectives.</p></article><article><span class="num">02 /</span><h3>Films & media</h3><p>Documentaries, travel features, digital video, and audiovisual projects.</p></article><article><span class="num">03 /</span><h3>Creative works</h3><p>Visual exploration, digital art, and ideas that find unexpected forms.</p></article></section><section class="founder-art-section" aria-labelledby="founder-accessible-title">
