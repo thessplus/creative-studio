@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#07121f"><meta name="description" content="ss+ Creative Studio develops original stories and creative media across formats. An independent home for curiosity, storytelling, and ideas."><link rel="icon" type="image/png" href="assets/studio_emblem.png"><link rel="stylesheet" href="styles.css">
-<link rel="canonical" href="https://thessplus.github.io/creative-studio/"><title>ss+ Creative Studio | Original works, thoughtfully made</title><style>
+<link rel="canonical" href="https://studio.thessplus.com/"><title>ss+ Creative Studio | Original works, thoughtfully made</title><style>
 /* Founder artwork: keep the approved composition at its current size,
    while visually continuing its pink/blue lighting across the page. */
 .founder-art-section{
@@ -23,12 +23,75 @@
  .founder-art-section{padding:24px 12px!important}
  .founder-art-section .founder-art{width:100%;max-width:100%;height:auto}
 }
+
+/* Channel showcase: responsive and independent of the rest of the page. */
+.channels-section {
+  padding: 76px 24px 82px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background:
+    radial-gradient(ellipse at 3% 50%,rgba(112,24,70,.32),transparent 45%),
+    radial-gradient(ellipse at 98% 20%,rgba(0,87,142,.35),transparent 55%),
+    linear-gradient(100deg,#1b1025,#071528 53%,#04182f);
+  color: #f7f7fa;
+}
+.channels-inner { max-width: 1320px; margin: auto; }
+.channels-heading { text-align: center; margin-bottom: 34px; }
+.channels-label { display:block; color:#e0d9e7; font-size:12px; text-transform:uppercase; letter-spacing:.3em; font-weight:700; margin-bottom:13px; }
+.channels-heading h2 { font-size:clamp(30px,4vw,48px); line-height:1.1; margin:0; color:#fff; font-weight:750; letter-spacing:-.035em; }
+.channels-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+.channel-card {
+  display:flex; align-items:center; min-height:270px; padding:24px;
+  gap:24px; border:1px solid rgba(29,184,249,.75);
+  border-radius:24px; overflow:hidden; text-decoration:none;
+  color:white; position:relative;
+  background:linear-gradient(120deg,#070e1d,#10233c);
+  box-shadow:0 12px 35px rgba(0,0,0,.19);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.channel-card:hover,.channel-card:focus-visible { transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.32); outline-offset:3px; }
+.channel-card.mithi { border-color:rgba(255,125,102,.9); background:linear-gradient(125deg,#182350 0%,#3c205d 58%,#3f1c56 100%); }
+.channel-media { width:52%; flex:0 0 52%; display:flex; align-items:center; justify-content:center; min-width:0; }
+.channel-media img { display:block; max-width:100%; height:auto; object-fit:contain; }
+.channel-card.originals .channel-media img { width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:10px; }
+.channel-card.mithi .channel-media img { max-height:205px; width:auto; border-radius:50%; }
+.channel-copy { flex:1; min-width:0; }
+.channel-copy h3 { font-size:clamp(18px,2.1vw,26px); margin:0 0 12px; line-height:1.15; color:white; }
+.channel-copy p { font-size:clamp(13px,1.25vw,16px); line-height:1.48; margin:0 0 26px; color:#e3e7f2; }
+.channel-action { display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:#fff; }
+.channel-action svg { width:22px; height:16px; flex:none; }
+@media (max-width:860px) {
+ .channels-grid { grid-template-columns:1fr; max-width:640px; margin:auto; }
+ .channel-card { min-height:240px; }
+}
+@media (max-width:540px) {
+ .channels-section { padding:54px 16px 58px; }
+ .channel-card { min-height:0; padding:17px; gap:14px; border-radius:18px; }
+ .channel-media { flex-basis:44%; width:44%; }
+ .channel-card.mithi .channel-media img { max-height:155px; }
+ .channel-copy h3 { font-size:19px; margin-bottom:9px; }
+ .channel-copy p { font-size:13px; margin-bottom:14px; }
+ .channel-action { font-size:12px; }
+}
+@media (prefers-reduced-motion:reduce) { .channel-card { transition:none; } }
 </style></head><body><div class="site"><header class="nav wrap"><a class="brand" href="./" aria-label="ss+ Creative Studio, home"><img src="assets/studio_emblem.png" alt="ss+ intertwined metallic studio emblem"><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br>Studio</span></span></a><nav class="links" aria-label="Main navigation"><a href="./" aria-current="page">Home</a><a href="contact/" class="nav-contact" >Hit us up</a></nav></header><main><section class="hero wrap"><div><div class="eyebrow">An independent creative media studio</div><h1>Good stories<br>begin with <em>curiosity.</em></h1><p class="hero-copy">We develop original stories, visual experiences, and creative works across formats. Guided by curiosity, shaped with care, and made to be shared.</p><a class="textlink" href="contact/">Reach us <span aria-hidden="true">↗</span></a></div><div class="hero-art" id="hero-logo"><img src="assets/studio_emblem.png" alt="Metallic silver, crimson and navy intertwined emblem, fully visible"><div class="blade-cut" aria-hidden="true"><span class="blade-reflection"></span><span class="blade-spark"></span></div></div></section><section class="featured-film" aria-label="Silent cinematic footage of Vietnam at night"><video autoplay muted loop playsinline preload="metadata" poster="assets/vietnam-city-after-dark-poster.jpg" aria-label="Nighttime city roads in Vietnam, illuminated buildings and passing traffic"><source src="assets/vietnam-city-after-dark.mp4" type="video/mp4"></video></section><div class="rule wrap"></div><section class="intro wrap"><div><span class="section-index">Our studio</span><h2>Ideas don't have to fit into one format.</h2></div><p>From moving images to written stories and visual art, we explore the medium that best serves each idea. We're building a home for original work that informs, entertains, inspires, or simply offers another way of looking at the world.</p></section><section class="three wrap" aria-label="What we create"><article><span class="num">01 /</span><h3>Stories</h3><p>Thoughtful narratives, original concepts, and fresh perspectives.</p></article><article><span class="num">02 /</span><h3>Films & media</h3><p>Documentaries, travel features, digital video, and audiovisual projects.</p></article><article><span class="num">03 /</span><h3>Creative works</h3><p>Visual exploration, digital art, and ideas that find unexpected forms.</p></article></section><section class="founder-art-section" aria-labelledby="founder-accessible-title">
   <h2 id="founder-accessible-title" class="visually-hidden">Meet Our Founder</h2>
   <img class="founder-art" src="assets/meet-our-founder-final.webp" alt="Meet Our Founder: Yan, in a crimson-and-blue cinematic portrait alongside playful hand-drawn scribbles and a biography." width="1448" height="1086" loading="lazy" decoding="async">
   <div class="visually-hidden">Yan is a creative spirit with a deep enthusiasm for documentaries, film, cinematography, sound, music, and visual aesthetics. A history geek and foodie at heart, he has always been drawn to the performing arts and to the quiet art of capturing everyday moments, stories, and details that make life meaningful.</div>
-</section><section class="closing"><div class="closing-inner wrap"><div><span class="section-index">Have something in mind?</span><h2>It starts with a conversation.</h2></div><a class="cta" href="contact/">Hit us up &nbsp; ↗</a></div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="https://www.youtube.com/@ssplusoriginals" target="_blank" rel="noopener noreferrer" aria-label="ss+ Originals on YouTube">YouTube · ss+ Originals</a> · <a href="contact/">Contact</a> · <a href="privacy-policy/">Privacy Policy</a> · <a href="accessibility/">Accessibility</a></span></footer><script>document.getElementById('year').textContent = new Date().getFullYear();</script></div>
-<!-- Cloudflare Web Analytics -->
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5295e1e6908948158667b8c790a9b784"}'></script>
-<!-- End Cloudflare Web Analytics -->
-</body></html>
+</section><section class="channels-section" aria-labelledby="channels-title">
+  <div class="channels-inner">
+    <div class="channels-heading">
+      <span class="channels-label">Our channels</span>
+      <h2 id="channels-title">A growing creative home.</h2>
+    </div>
+    <div class="channels-grid">
+      <a class="channel-card originals" href="https://www.youtube.com/@ssplusoriginals" target="_blank" rel="noopener noreferrer" aria-label="Visit ss+ Originals on YouTube (opens in a new tab)">
+        <div class="channel-media"><img src="assets/ss-originals-channel.jpg" alt="Official ss+ Originals banner and metallic logo" loading="lazy"></div>
+        <div class="channel-copy"><h3>ss+ Originals</h3><p>Films and stories exploring people, places, and ideas.</p><span class="channel-action"><svg viewBox="0 0 24 18" role="presentation" aria-hidden="true"><rect x="0" y="1" width="24" height="16" rx="4" fill="#ff0033"/><path d="M10 5.25 16 9l-6 3.75z" fill="#fff"/></svg> Watch on YouTube ↗</span></div>
+      </a>
+      <a class="channel-card mithi" href="https://www.youtube.com/@atingmithi" target="_blank" rel="noopener noreferrer" aria-label="Visit Mithi on YouTube (opens in a new tab)">
+        <div class="channel-media"><img src="assets/mithi-channel.png" alt="Official Mithi logo with purple sky, golden stars, and sunrise" loading="lazy"></div>
+        <div class="channel-copy"><h3>Mithi</h3><p>Stories for Filipino children, rooted in values and imagination.</p><span class="channel-action"><svg viewBox="0 0 24 18" role="presentation" aria-hidden="true"><rect x="0" y="1" width="24" height="16" rx="4" fill="#ff0033"/><path d="M10 5.25 16 9l-6 3.75z" fill="#fff"/></svg> Watch on YouTube ↗</span></div>
+      </a>
+    </div>
+  </div>
+</section><section class="closing"><div class="closing-inner wrap"><div><span class="section-index">Have something in mind?</span><h2>It starts with a conversation.</h2></div><a class="cta" href="contact/">Hit us up &nbsp; ↗</a></div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="contact/">Contact</a> · <a href="privacy-policy/">Privacy Policy</a> · <a href="accessibility/">Accessibility</a></span></footer><script>document.getElementById('year').textContent = new Date().getFullYear();</script></div></body></html>
