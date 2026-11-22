@@ -90,7 +90,80 @@
  .channel-copy { padding-left:12px; }
 }
 @media (prefers-reduced-motion:reduce) { .channel-card { transition:none; } }
-</style></head><body><div class="site"><header class="nav wrap"><a class="brand" href="./" aria-label="ss+ Creative Studio, home"><img src="assets/studio_emblem.png" alt="ss+ intertwined metallic studio emblem"><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br>Studio</span></span></a><nav class="links" aria-label="Main navigation"><a href="./" aria-current="page">Home</a><a href="contact/" class="nav-contact" >Hit us up</a></nav></header><main><section class="hero wrap"><div><div class="eyebrow">An independent creative media studio</div><h1>Good stories<br>begin with <em>curiosity.</em></h1><p class="hero-copy">We develop original stories, visual experiences, and creative works across formats. Guided by curiosity, shaped with care, and made to be shared.</p><a class="textlink" href="contact/">Reach us <span aria-hidden="true">↗</span></a></div><div class="hero-art" id="hero-logo"><img src="assets/studio_emblem.png" alt="Metallic silver, crimson and navy intertwined emblem, fully visible"><div class="blade-cut" aria-hidden="true"><span class="blade-reflection"></span><span class="blade-spark"></span></div></div></section><section class="featured-film" aria-label="Silent cinematic footage of Vietnam at night"><video autoplay muted loop playsinline preload="metadata" poster="assets/vietnam-city-after-dark-poster.jpg" aria-label="Nighttime city roads in Vietnam, illuminated buildings and passing traffic"><source src="assets/vietnam-city-after-dark.mp4" type="video/mp4"></video></section><div class="rule wrap"></div><section class="intro wrap"><div><span class="section-index">Our studio</span><h2>Ideas don't have to fit into one format.</h2></div><p>From moving images to written stories and visual art, we explore the medium that best serves each idea. We're building a home for original work that informs, entertains, inspires, or simply offers another way of looking at the world.</p></section><section class="three wrap" aria-label="What we create"><article><span class="num">01 /</span><h3>Stories</h3><p>Thoughtful narratives, original concepts, and fresh perspectives.</p></article><article><span class="num">02 /</span><h3>Films & media</h3><p>Documentaries, travel features, digital video, and audiovisual projects.</p></article><article><span class="num">03 /</span><h3>Creative works</h3><p>Visual exploration, digital art, and ideas that find unexpected forms.</p></article></section><section class="founder-art-section" aria-labelledby="founder-accessible-title">
+/* Books & Stories | Scoped addition. Existing homepage and contact styles unchanged. */
+.books-nav-mobile { display:none; }
+.books-stories { position:relative; padding:90px 24px 115px; overflow:hidden; color:#f8f3f5;
+  background:radial-gradient(ellipse at 0% 15%,rgba(122,23,66,.22),transparent 48%),
+             radial-gradient(ellipse at 100% 90%,rgba(0,78,119,.22),transparent 52%),
+             linear-gradient(115deg,#130e20,#0a1727 56%,#12101d);
+  border-top:1px solid rgba(255,255,255,.10); }
+.books-stories * {box-sizing:border-box;}
+.books-container {width:min(1140px,100%);margin-inline:auto;}
+.books-heading {max-width:770px;margin:0 auto 42px;text-align:center;}
+.books-kicker {display:block;text-transform:uppercase;color:#d3a6bb;font-size:13px;letter-spacing:.3em;font-weight:600;margin-bottom:13px;}
+.books-heading h2 {font:700 clamp(28px,3.5vw,43px)/1.17 Manrope,Arial,sans-serif;letter-spacing:-.038em;margin:0;color:#fff;}
+.books-heading .books-tagline {color:#eee0e7;font-size:clamp(16px,1.5vw,19px);margin:0 0 12px;line-height:1.6;}
+.books-heading .books-intro {color:#c9b9c9;font-size:15px;line-height:1.6;margin:0 auto;max-width:680px;}
+.books-rack {position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 34px;
+   padding:30px 44px 64px;border:1px solid rgba(255,255,255,.11);border-radius:5px 5px 2px 2px;
+   background:linear-gradient(180deg,rgba(255,255,255,.022),rgba(4,8,16,.12));isolation:isolate;}
+.books-rack::after {content:'';position:absolute;left:-10px;right:-10px;bottom:16px;height:18px;z-index:-1;
+  background:linear-gradient(180deg,#495064 0%,#242b39 28%,#101622 70%,#070b13 100%);
+  border-top:1px solid rgba(236,205,221,.28);box-shadow:0 11px 16px rgba(0,0,0,.5);border-radius:2px;}
+.books-item {display:grid;grid-template-rows:290px minmax(36px,auto) auto;align-items:center;justify-items:center;row-gap:14px;min-width:0;text-align:center;}
+.books-spine {display:block;position:relative;width:min(100%,275px);height:290px;
+  padding:0;border:none;background:transparent;color:inherit;cursor:pointer;perspective:700px;}
+.books-cover {height:100%;width:100%;display:flex;align-items:center;justify-content:center;position:relative;transform:rotate(-1.4deg);
+  transition:transform .22s ease;filter:drop-shadow(13px 17px 10px rgba(0,0,0,.38));}
+.books-item:nth-child(2) .books-cover {transform:rotate(1.1deg);}
+.books-spine:hover .books-cover,.books-spine:focus-visible .books-cover {transform:translateY(-7px) rotate(0deg);}
+.books-cover::before {content:'';position:absolute;left:5%;top:0;bottom:0;width:5px;background:linear-gradient(90deg,rgba(255,255,255,.45),transparent);z-index:1;pointer-events:none;}
+.books-cover img {display:block;max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;border:1px solid rgba(255,255,255,.22);
+  box-shadow:inset 3px 0 7px rgba(0,0,0,.4),7px 5px 13px rgba(0,0,0,.32);}
+.books-name {margin:0;max-width:390px;text-align:center;color:#fff;font:600 clamp(17px,1.5vw,21px)/1.35 Manrope,Arial,sans-serif;}
+.books-meta {text-align:center;color:#bdc5d1;font-size:12px;line-height:1.5;max-width:300px;}
+.books-availability {color:#efc5d2;font-size:11px;text-transform:uppercase;letter-spacing:.14em;}
+.books-details-trigger {border:1px solid rgba(242,190,206,.43);border-radius:2px;padding:10px 18px;background:transparent;color:#f3e7ec;
+  font:600 12px 'DM Sans',Arial,sans-serif;letter-spacing:.05em;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;}
+.books-details-trigger:hover,.books-details-trigger:focus-visible {background:rgba(226,34,58,.17);}
+.books-dialog {border:1px solid rgba(239,182,205,.25);padding:0;background:#101724;color:#f8f5f8;max-width:min(740px,calc(100% - 28px));width:100%;
+   box-shadow:0 25px 80px rgba(0,0,0,.75);border-radius:9px;max-height:calc(100vh - 36px);}
+.books-dialog::backdrop {background:rgba(2,4,11,.84);backdrop-filter:blur(4px);}
+.books-dialog-inner {display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:30px;align-items:center;padding:42px;position:relative;}
+.books-dialog-image {width:100%;max-height:320px;object-fit:contain;filter:drop-shadow(8px 13px 10px rgba(0,0,0,.36));}
+.books-dialog-title {font:600 clamp(24px,2.4vw,33px)/1.18 Manrope,Arial,sans-serif;letter-spacing:-.035em;margin:6px 0 15px;color:#fff;}
+.books-dialog-category {font-size:11px;color:#e9afc4;letter-spacing:.10em;text-transform:uppercase;}
+.books-dialog-description {font-size:15px;color:#c4cbd6;line-height:1.8;margin:0 0 20px;}
+.books-dialog-format {font-size:12px;color:#a8b5c5;margin:0 0 20px;}
+.books-buy {display:inline-flex;background:#e7afc3;color:#101522;font-size:13px;font-weight:800;text-decoration:none;padding:13px 18px;border-radius:2px;}
+.books-buy:hover {background:#fff1f6;}
+.books-dialog-close {position:absolute;top:12px;right:14px;background:none;border:0;color:#f8eff3;font-size:28px;line-height:1;cursor:pointer;padding:8px;}
+.books-cover-note {font-size:11px;color:#9ca7b4;margin:0;text-align:center;max-width:280px;}
+@media(max-width:760px){
+ .links a.books-nav {display:inline-flex!important;white-space:nowrap;letter-spacing:.025em;opacity:1;font-size:10px;}
+ .books-nav-desktop {display:none;}.books-nav-mobile {display:inline;}
+ .links {gap:11px;}.links .nav-contact {padding:9px 10px;}
+ .books-stories {padding:66px 18px 76px;}
+ .books-heading {margin-bottom:34px;}.books-heading .books-intro {font-size:14px;}
+ .books-rack {padding:20px 12px 56px;gap:33px 15px;}
+ .books-item {grid-template-rows:225px minmax(36px,auto) auto;} .books-spine {height:225px;}
+ .books-name {font-size:16px;}
+ .books-dialog-inner {grid-template-columns:1fr;gap:22px;padding:42px 26px 30px;overflow-y:auto;}
+ .books-dialog-image {max-height:230px;max-width:220px;margin:auto;}
+}
+@media(max-width:520px){.books-rack{grid-template-columns:1fr;padding:28px 18px 54px;gap:48px;}
+ .books-item{grid-template-rows:265px minmax(36px,auto) auto;}.books-spine{height:265px;}.books-rack::after{bottom:12px;}
+ .books-item{row-gap:12px;}
+}
+@media(max-width:370px){.links {gap:7px}.links .nav-contact{padding:7px 8px;font-size:10px}.books-nav-mobile{font-size:10px}.brand-name{gap:5px}}
+@media(prefers-reduced-motion:reduce){.books-cover{transition:none!important;}}
+
+/* Original approved square thumbnails, displayed consistently without cropping. */
+.books-spine { width:min(100%,275px); height:290px; }
+.books-cover img { aspect-ratio:1/1; object-fit:contain; }
+@media(max-width:760px){.books-spine{height:225px;}}
+@media(max-width:520px){.books-spine{height:265px;}}
+</style></head><body><div class="site"><header class="nav wrap"><a class="brand" href="./" aria-label="ss+ Creative Studio, home"><img src="assets/studio_emblem.png" alt="ss+ intertwined metallic studio emblem"><span class="brand-name"><span class="wordmark">ss<span class="plus">+</span></span><span class="brand-divider"></span><span class="brand-sub">Creative<br>Studio</span></span></a><nav class="links" aria-label="Main navigation"><a href="./" aria-current="page">Home</a><a class="books-nav" href="#books-stories"><span class="books-nav-desktop">Books &amp; Stories</span><span class="books-nav-mobile">Books</span></a><a href="contact/" class="nav-contact" >Hit us up</a></nav></header><main><section class="hero wrap"><div><div class="eyebrow">An independent creative media studio</div><h1>Good stories<br>begin with <em>curiosity.</em></h1><p class="hero-copy">We develop original stories, visual experiences, and creative works across formats. Guided by curiosity, shaped with care, and made to be shared.</p><a class="textlink" href="contact/">Reach us <span aria-hidden="true">↗</span></a></div><div class="hero-art" id="hero-logo"><img src="assets/studio_emblem.png" alt="Metallic silver, crimson and navy intertwined emblem, fully visible"><div class="blade-cut" aria-hidden="true"><span class="blade-reflection"></span><span class="blade-spark"></span></div></div></section><section class="featured-film" aria-label="Silent cinematic footage of Vietnam at night"><video autoplay muted loop playsinline preload="metadata" poster="assets/vietnam-city-after-dark-poster.jpg" aria-label="Nighttime city roads in Vietnam, illuminated buildings and passing traffic"><source src="assets/vietnam-city-after-dark.mp4" type="video/mp4"></video></section><div class="rule wrap"></div><section class="intro wrap"><div><span class="section-index">Our studio</span><h2>Ideas don't have to fit into one format.</h2></div><p>From moving images to written stories and visual art, we explore the medium that best serves each idea. We're building a home for original work that informs, entertains, inspires, or simply offers another way of looking at the world.</p></section><section class="three wrap" aria-label="What we create"><article><span class="num">01 /</span><h3>Stories</h3><p>Thoughtful narratives, original concepts, and fresh perspectives.</p></article><article><span class="num">02 /</span><h3>Films & media</h3><p>Documentaries, travel features, digital video, and audiovisual projects.</p></article><article><span class="num">03 /</span><h3>Creative works</h3><p>Visual exploration, digital art, and ideas that find unexpected forms.</p></article></section><section class="founder-art-section" aria-labelledby="founder-accessible-title">
   <h2 id="founder-accessible-title" class="visually-hidden">Meet Our Founder</h2>
   <img class="founder-art" src="assets/meet-our-founder-final.webp" alt="Meet Our Founder: Yan, in a crimson-and-blue cinematic portrait alongside playful hand-drawn scribbles and a biography." width="1448" height="1086" loading="lazy" decoding="async">
   <div class="visually-hidden">Yan is a creative spirit with a deep enthusiasm for documentaries, film, cinematography, sound, music, and visual aesthetics. A history geek and foodie at heart, he has always been drawn to the performing arts and to the quiet art of capturing everyday moments, stories, and details that make life meaningful.</div>
@@ -111,4 +184,28 @@
       </a>
     </div>
   </div>
-</section><section class="closing"><div class="closing-inner wrap"><div><span class="section-index">Have something in mind?</span><h2>It starts with a conversation.</h2></div><a class="cta" href="contact/">Hit us up &nbsp; ↗</a></div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="contact/">Contact</a> · <a href="privacy-policy/">Privacy Policy</a> · <a href="accessibility/">Accessibility</a></span></footer><script>document.getElementById('year').textContent = new Date().getFullYear();</script></div></body></html>
+</section><section class="books-stories" id="books-stories" aria-labelledby="books-title">
+ <div class="books-container">
+  <header class="books-heading">
+   <span class="books-kicker">Books &amp; Stories</span>
+   <h2 id="books-title">Original reads and illustrated stories.</h2>
+  </header>
+  <div class="books-rack" aria-label="Published books">
+    <article class="books-item">
+      <a class="books-spine" href="https://sspluscreativestudio.gumroad.com/l/heal" target="_blank" rel="noopener noreferrer" aria-label="Get How to Heal a Broken Heart Using AI? on Gumroad (opens in a new tab)">
+        <span class="books-cover"><img src="assets/books/heart-ai-thumbnail.webp" alt="Approved thumbnail for How to Heal a Broken Heart Using AI?" loading="lazy" width="960" height="960"></span>
+      </a>
+      <div class="books-meta">Personal Growth / Reflective Reading</div>
+      <a class="books-details-trigger" href="https://sspluscreativestudio.gumroad.com/l/heal" target="_blank" rel="noopener noreferrer">Get this ↗</a>
+    </article>
+    <article class="books-item">
+      <a class="books-spine" href="https://sspluscreativestudio.gumroad.com/l/mithi" target="_blank" rel="noopener noreferrer" aria-label="Get Ang Ating Mithi ay Magmahalan on Gumroad (opens in a new tab)">
+       <span class="books-cover"><img src="assets/books/mithi-book-01.webp" alt="Published illustrated cover of Ang Ating Mithi ay Magmahalan" loading="lazy" width="960" height="960"></span>
+      </a>
+      <div class="books-meta">Children's Books / Filipino Values</div>
+      <a class="books-details-trigger" href="https://sspluscreativestudio.gumroad.com/l/mithi" target="_blank" rel="noopener noreferrer">Get this ↗</a>
+    </article>
+  </div>
+ </div>
+</section>
+<section class="closing"><div class="closing-inner wrap"><div><span class="section-index">Have something in mind?</span><h2>It starts with a conversation.</h2></div><a class="cta" href="contact/">Hit us up &nbsp; ↗</a></div></section></main><footer class="footer wrap"><span><strong>ss+ Creative Studio</strong> · Original works, thoughtfully made.</span><span>© <span id="year">2026</span> ss+ Creative Studio · <a href="contact/">Contact</a> · <a href="privacy-policy/">Privacy Policy</a> · <a href="accessibility/">Accessibility</a></span></footer><script>document.getElementById('year').textContent = new Date().getFullYear();</script></div></body></html>
